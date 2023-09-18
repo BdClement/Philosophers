@@ -6,15 +6,31 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:01:11 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/11 20:24:20 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/15 13:15:10 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-// This function is similar to usleep but it wait time ms instead of
-// microseconds
-// 1 microsecond == 0,001ms
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+		i++;
+	return (i);
+}
+
 void	ft_usleep(unsigned int time)
 {
 	unsigned long	start;
@@ -26,10 +42,10 @@ void	ft_usleep(unsigned int time)
 
 void	print(t_philo *philo, char *str)
 {
-	// mutex_print lock
-	printf("%lu %d %s\n",get_timestamp_in_ms() - philo->data->start, philo->rank, str);
-	// mutex_print unlock
-
+	pthread_mutex_lock(&philo->data->mutex_print);
+	printf(" %lu %d %s\n", get_timestamp_in_ms() - philo->data->start,
+		philo->rank, str);
+	pthread_mutex_unlock(&philo->data->mutex_print);
 }
 
 unsigned long	get_timestamp_in_ms(void)
@@ -38,21 +54,4 @@ unsigned long	get_timestamp_in_ms(void)
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-}
-
-int	get_len_tab(char **tab)
-{
-	int	len;
-	int	i;
-
-	len = 0;
-	i = 0;
-	if (tab == NULL)
-		return (len);
-	while (tab[i] != NULL)
-	{
-		len++;
-		i++;
-	}
-	return (len);
 }
