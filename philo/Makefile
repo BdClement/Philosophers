@@ -6,7 +6,7 @@
 #    By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 17:41:26 by clbernar          #+#    #+#              #
-#    Updated: 2023/09/18 18:45:04 by clbernar         ###   ########.fr        #
+#    Updated: 2023/09/22 14:16:16 by clbernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,8 @@ SRCS = 			$(SRC_DIR)/main.c\
 				$(SRC_DIR)/utils.c\
 				$(SRC_DIR)/utils2.c\
 				$(SRC_DIR)/clean.c\
-				$(SRC_DIR)/routine.c\
-				$(SRC_DIR)/dead.c\
+				$(SRC_DIR)/eating.c\
+				$(SRC_DIR)/end.c\
 
 ## OBJECTS
 

@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 17:54:17 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/18 19:13:26 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:52:45 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
-// #include <stdint.h>
 
 # define FORK "has taken a fork"
 # define EAT "is eating"
@@ -45,7 +44,6 @@ typedef struct s_data{
 	struct s_philo		*tab_philo;
 	pthread_mutex_t		*mutex_fork;
 	pthread_mutex_t		mutex_print;
-	// pthread_mutex_t		mutex_dead;
 	pthread_mutex_t		lock;
 	pthread_t			watchdog;
 }				t_data;
@@ -60,7 +58,9 @@ typedef struct s_philo{
 	int							right;
 }				t_philo;
 
-
+// main.c
+void				philo(t_data *data);
+void				*routine(void *data);
 // check_args.c
 int					ft_atoi(const char *nptr);
 int					check_overflow(char **arg, int size);
@@ -77,10 +77,13 @@ void				ft_usleep(unsigned int time);
 
 // utils2.c
 void				destroy_mutex_tab(pthread_mutex_t *tmp, int size);
+int					philo_alone(t_philo *philo);
+void				even_philo_start_thinking(t_philo *philo);
+int					check_time_limits(t_data *data);
+int					fill_numbers_in_data(t_data *data, char **arg, int nb_args);
 
 // init_structs.c
-// int					*init_fork(int nb_philos);
-int					fill_numbers_in_data(t_data *data, char **arg, int nb_args);
+int					*init_fork(int nb_philos);
 void				init_philo_struct(t_philo *philo, int i, t_data *data);
 struct s_philo		*init_tab_philo(t_data *data);
 pthread_mutex_t		*init_mutex_fork(t_data *data);
@@ -90,15 +93,18 @@ int					init_data_struct(t_data *data, char **arg, int nb_args);
 int					init_failed(t_data *data, int error_code);
 void				free_data(t_data *data);
 
-// routine.c
-void				*routine(void *data);
+// eating.c
 void				eating(t_philo *philo);
 void				take_fork(t_philo *philo);
+void				odd_philo_take_fork(t_philo *philo);
+void				even_philo_take_fork(t_philo *philo);
 void				put_fork_back(t_philo *philo);
 
-// dead.c
-int					check_death(t_philo *philo, unsigned long time_to_die, unsigned long last_meal);
+// end.c
+int					check_death(t_philo *philo, unsigned long time_to_die,
+						unsigned long last_meal);
 void				*watchdog(void *data);
+int					check_watchdog(t_philo *tmp_philo, int *nb_finished);
 int					is_dead(t_data *data);
-// void				check_death(t_philo *philo, unsigned long time_to_die);
+int					meal_is_over(t_data *data);
 #endif

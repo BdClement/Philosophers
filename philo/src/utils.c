@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:01:11 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/15 13:15:10 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:57:03 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ void	ft_usleep(unsigned int time)
 void	print(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(&philo->data->mutex_print);
-	printf(" %lu %d %s\n", get_timestamp_in_ms() - philo->data->start,
-		philo->rank, str);
+	if (meal_is_over(philo->data))
+		printf(" %lu %s\n", get_timestamp_in_ms() - philo->data->start, str);
+	else
+		printf(" %lu %d %s\n", get_timestamp_in_ms() - philo->data->start,
+			philo->rank, str);
 	pthread_mutex_unlock(&philo->data->mutex_print);
 }
 

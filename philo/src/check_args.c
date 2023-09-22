@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:49:23 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/13 17:01:57 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:43:52 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_overflow(char **arg, int size)
 	int	i;
 
 	i = 1;
-	while (i < size)
+	while (i <= size)
 	{
 		if (overflow(arg[i]))
 		{

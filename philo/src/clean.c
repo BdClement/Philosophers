@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 19:33:59 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/18 18:29:21 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 12:34:34 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	free_data(t_data *data)
 {
 	destroy_mutex_tab(data->mutex_fork, data->nb_philos - 1);
 	pthread_mutex_destroy(&data->mutex_print);
-	// pthread_mutex_destroy(&data->mutex_dead);
 	pthread_mutex_destroy(&data->lock);
 	if (data->tab_philo != NULL)
 		free(data->tab_philo);
