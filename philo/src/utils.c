@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:01:11 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/22 13:57:03 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:36:25 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
+// This function is more precise than the existing usleep function
+// The existing function usleep is a non deterministic function
+// that can sleep a different time when called two times with the same
+// input. The function ft_usleep avoid it
 void	ft_usleep(unsigned int time)
 {
 	unsigned long	start;

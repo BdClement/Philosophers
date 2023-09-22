@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:50:45 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/22 13:53:30 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:30:22 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	meal_is_over(t_data *data)
 	return (ret);
 }
 
+// This function is the wathdog routine that checks if
+// a philo died or if they all have eaten enough
 void	*watchdog(void *data)
 {
 	t_philo			*tmp_philo;

@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:49:23 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/22 13:43:52 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:26:30 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int	check_overflow(char **arg, int size)
 	return (0);
 }
 
-//Check si la chaine donnee depassera les limites de int
-//Chiffre par chiffre des lors qu'on depasse les limites
-// On renvoie 1 synomyme de ecrire error sur la sortie d'erreur
+// Check if the atoi of the string is bigger than an int
 int	overflow(const char *nptr)
 {
 	long int	value;
@@ -59,7 +57,6 @@ int	overflow(const char *nptr)
 	return (0);
 }
 
-// check atoi plus grand que int
 int	ft_atoi(const char *nptr)
 {
 	int	i;

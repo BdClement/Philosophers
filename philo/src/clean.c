@@ -6,12 +6,14 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 19:33:59 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/22 12:34:34 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:28:15 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
+// This function is called when the initialisation part failed
+// Depending on where it failed, it clears what it needs to clear
 int	init_failed(t_data *data, int error_code)
 {
 	if (data->fork != NULL)
@@ -27,6 +29,7 @@ int	init_failed(t_data *data, int error_code)
 	return (0);
 }
 
+// This function clear my program when the meal is done
 void	free_data(t_data *data)
 {
 	destroy_mutex_tab(data->mutex_fork, data->nb_philos - 1);

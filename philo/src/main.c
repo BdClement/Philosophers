@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:00:24 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/22 14:16:37 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:24:53 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // valgrind --tool=drd ./philo
 // -fsanitize=thread -g (data race)
 
+// This function is the routine for philosophers
 void	*routine(void *data)
 {
 	t_philo		*tmp_philo;
@@ -40,6 +41,9 @@ void	*routine(void *data)
 	return (NULL);
 }
 
+// This function is called when parsing, initialisation of t_data and
+// t_philo structures are ok
+// It creates my threads philo and my thread watchdog
 void	philo(t_data *data)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:38:01 by clbernar          #+#    #+#             */
-/*   Updated: 2023/09/22 14:12:37 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/09/22 14:33:27 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	destroy_mutex_tab(pthread_mutex_t *tmp, int size)
 	}
 }
 
+// This function is in the particular case of a philo alone
 int	philo_alone(t_philo *philo)
 {
 	if (philo->data->nb_philos != 1)
@@ -59,6 +60,7 @@ int	check_time_limits(t_data *data)
 	return (1);
 }
 
+// This function fills the data structure with the args if they are valid
 int	fill_numbers_in_data(t_data *data, char **arg, int nb_args)
 {
 	data->pb_init_mutex_fork = 0;
